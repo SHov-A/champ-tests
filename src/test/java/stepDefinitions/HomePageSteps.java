@@ -5,6 +5,9 @@ import io.cucumber.java.en.Then;
 import org.springframework.beans.factory.annotation.Autowired;
 import pages.HomePage;
 
+/**
+ * Home Page's related actions.
+ */
 public class HomePageSteps {
 
 	@Autowired
@@ -12,7 +15,7 @@ public class HomePageSteps {
 
 	@Then("^User clicks on account settings button$")
 	public void user_clicks_on_account_settings_button() throws InterruptedException {
-		Thread.sleep(3000);
+		Thread.sleep(3000); // TODO bad solution
 		TestUtil.click(homePage.getAccountSettings());
 	}
 

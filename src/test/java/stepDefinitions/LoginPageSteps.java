@@ -5,6 +5,9 @@ import io.cucumber.java.en.Then;
 import org.springframework.beans.factory.annotation.Autowired;
 import pages.LoginPage;
 
+/**
+ * Login Page's related actions.
+ */
 public class LoginPageSteps {
 
 	@Autowired

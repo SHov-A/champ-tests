@@ -9,6 +9,9 @@ import org.springframework.lang.Nullable;
 
 import java.util.HashMap;
 
+/**
+ * Available browsers.
+ */
 public enum Browser {
 
 	CHROME("webdriver.chrome.driver", DriverProps.chrome) {

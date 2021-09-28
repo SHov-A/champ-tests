@@ -1,14 +1,14 @@
 package pages;
 
 import config.PageContext;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+/**
+ * Login Page's related web elements.
+ */
 public class LoginPage {
-
-	private final WebDriver driver;
 
 	@FindBy(id = "okta-signin-username")
 	private WebElement username;
@@ -21,8 +21,7 @@ public class LoginPage {
 
 
 	public LoginPage(PageContext pageContext) {
-		this.driver = pageContext.getDriver();
-		PageFactory.initElements(this.driver, this);
+		PageFactory.initElements(pageContext.getDriver(), this);
 	}
 
 	public WebElement getUserName() {

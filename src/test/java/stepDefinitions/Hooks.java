@@ -5,6 +5,9 @@ import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Required actions after all scenarios.
+ */
 public class Hooks {
 
 	@Autowired
@@ -13,7 +16,7 @@ public class Hooks {
 	@After
 	public void after(Scenario scenario) {
 		if (scenario.isFailed()) {
-			scenario.embed(pageContext.getScreenShot(), "image/png");
+			scenario.embed(pageContext.getScreenShot(), "image/png", "The Screenshot");
 		}
 	}
 

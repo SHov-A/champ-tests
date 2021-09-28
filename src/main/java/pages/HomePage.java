@@ -1,16 +1,16 @@
 package pages;
 
 import config.PageContext;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
+/**
+ * Home Page's related web elements.
+ */
 public class HomePage {
-
-	private final WebDriver driver;
 
 	@FindBy(className = "account-profile__account-settings__button")
 	private WebElement accountSettings;
@@ -34,8 +34,7 @@ public class HomePage {
 	private WebElement logout;
 
 	public HomePage(PageContext pageContext) {
-		this.driver = pageContext.getDriver();
-		PageFactory.initElements(this.driver, this);
+		PageFactory.initElements(pageContext.getDriver(), this);
 	}
 
 	public WebElement getAccountSettings() {

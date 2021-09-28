@@ -12,22 +12,34 @@ import java.util.Properties;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
+/**
+ * Driver and configuration required actions.
+ */
 public class PageContext {
 
 	private static final int PAGE_LOAD_TIMEOUT = 15;
 	private static final int IMPLICIT_WAIT = 15;
+	private static final String URL_PROPERTY = "url";
 
 	private final WebDriver driver;
 
+	/**
+	 * Configures the web driver behavior.
+	 * @param driver - {@link WebDriver}
+	 */
 	public PageContext(WebDriver driver) {
 		this.driver = driver;
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, SECONDS);
 		driver.manage().timeouts().implicitlyWait(IMPLICIT_WAIT, SECONDS);
-		driver.get(config().getProperty("url"));
+		driver.get(config().getProperty(URL_PROPERTY));
 		driver.manage().deleteAllCookies();
 	}
 
+	/**
+	 * Reads configuration from config file.
+	 * @return - {@link Properties}
+	 */
 	public static Properties config() {
 		Properties prop = null;
 		try {
@@ -35,7 +47,9 @@ public class PageContext {
 			FileInputStream file = new FileInputStream(new File("./src/main/resources/config.properties"));
 			prop.load(file);
 		} catch (IOException e) {
-			System.err.println("can't find properties file");
+			final String msg = "can't find properties file";
+			System.err.println(msg);
+			throw new RuntimeException(msg);
 		}
 		return prop;
 	}
@@ -44,6 +58,10 @@ public class PageContext {
 		return driver;
 	}
 
+	/**
+	 * Takes screenshot when test fails.
+	 * @return - array of bytes
+	 */
 	public byte[] getScreenShot() {
 		byte[] screenshot;
 		if (driver instanceof TakesScreenshot) {

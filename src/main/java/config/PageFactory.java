@@ -11,6 +11,9 @@ import pages.LoginPage;
 
 import java.util.Properties;
 
+/**
+ * The configuration of spring beans.
+ */
 @Configuration
 public class PageFactory {
 

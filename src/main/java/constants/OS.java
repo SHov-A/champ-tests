@@ -2,6 +2,9 @@ package constants;
 
 import org.springframework.lang.Nullable;
 
+/**
+ * Available operating systems.
+ */
 public enum OS {
 	WINDOWS,
 	LINUX;

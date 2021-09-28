@@ -2,6 +2,9 @@ package constants;
 
 import java.util.HashMap;
 
+/**
+ * Web driver properties corresponding to operating systems.
+ */
 public class DriverProps {
 	public static HashMap<OS, String> chrome = new HashMap<>();
 	public static HashMap<OS, String> firefox = new HashMap<>();

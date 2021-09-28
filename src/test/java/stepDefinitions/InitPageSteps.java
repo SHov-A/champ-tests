@@ -10,6 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import pages.InitPage;
 
+/**
+ * Importing the spring context configuration and
+ * actions related to initial page.
+ */
 @CucumberContextConfiguration
 @ContextConfiguration(classes = PageFactory.class)
 public class InitPageSteps {
@@ -19,7 +23,7 @@ public class InitPageSteps {
 
 	@Given("^User is in initial page and title should by \"([^\"]*)\"$")
 	public void user_is_in_initial_page(String titleText) {
-		String title = initPage.verifyHomePageTitle();
+		String title = initPage.getHomePageTitle();
 		Assert.assertEquals(titleText, title);
 	}
 

@@ -6,6 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+/**
+ * Initial Page's related web elements.
+ */
 public class InitPage {
 
 	private final WebDriver driver;
@@ -24,7 +27,7 @@ public class InitPage {
 		PageFactory.initElements(this.driver, this);
 	}
 
-	public String verifyHomePageTitle() {
+	public String getHomePageTitle() {
 		return driver.getTitle();
 	}
 
