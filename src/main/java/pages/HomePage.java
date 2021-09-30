@@ -27,8 +27,20 @@ public class HomePage {
 	@FindBy(xpath = "//div[@class='avatar-select-image-frame']")
 	private List<WebElement> framesList;
 
+	@FindBy(xpath = "//div[@class='avatar-select-image']/parent::div/parent::div")
+	private List<WebElement> dadAvatarsListForCompare;
+
+	@FindBy(xpath = "//div[@class='avatar-select-image-frame']/parent::div/parent::div")
+	private List<WebElement> dadFramesListForCompare;
+
 	@FindBy(xpath = "//button[contains(text(),'Apply')]")
 	private WebElement applyAvatarAndFrame;
+
+	@FindBy(xpath = "//img[@class='avatar-frame']/parent::div")
+	private WebElement addedAvatarForCompare;
+
+	@FindBy(xpath = "//img[@class='avatar-frame']")
+	private WebElement addedFrameForCompare;
 
 	@FindBy(xpath = "//p[contains(text(),'Logout')]")
 	private WebElement logout;
@@ -57,8 +69,24 @@ public class HomePage {
 		return framesList;
 	}
 
+	public List<WebElement> getDadAvatarsListForCompare() {
+		return dadAvatarsListForCompare;
+	}
+
+	public List<WebElement> getDadFramesListForCompare() {
+		return dadFramesListForCompare;
+	}
+
 	public WebElement getApplyAvatarAndFrame() {
 		return applyAvatarAndFrame;
+	}
+
+	public WebElement getAddedAvatarForCompare() {
+		return addedAvatarForCompare;
+	}
+
+	public WebElement getAddedFrameForCompare() {
+		return addedFrameForCompare;
 	}
 
 	public WebElement getLogout() {

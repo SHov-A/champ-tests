@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import pages.HomePage;
 import pages.InitPage;
 import pages.LoginPage;
+import waits.ChampsWaits;
 
 import java.util.Properties;
 
@@ -55,6 +56,11 @@ public class PageFactory {
 	@Bean
 	public HomePage homePage() {
 		return new HomePage(pageContext());
+	}
+
+	@Bean
+	public ChampsWaits champsWaits(){
+		return new ChampsWaits(pageContext());
 	}
 
 }

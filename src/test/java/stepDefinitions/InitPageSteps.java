@@ -9,6 +9,7 @@ import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import pages.InitPage;
+import waits.ChampsWaits;
 
 /**
  * Importing the spring context configuration and
@@ -21,20 +22,23 @@ public class InitPageSteps {
 	@Autowired
 	private InitPage initPage;
 
+	@Autowired
+	private ChampsWaits champsWaits;
+
 	@Given("^User is in initial page and title should by \"([^\"]*)\"$")
 	public void user_is_in_initial_page(String titleText) {
-		String title = initPage.getHomePageTitle();
-		Assert.assertEquals(titleText, title);
+		final boolean titleCheck = champsWaits.titleIs(titleText);
+		Assert.assertTrue(titleCheck);
 	}
 
 	@Then("^User clicks on initial login button$")
 	public void user_clicks_on_initial_login_button() {
-		TestUtil.click(initPage.getInitialLogin());
+		TestUtil.click(champsWaits.elementToBeClickable(initPage.getInitialLogin()));
 	}
 
 	@Then("^User clicks on login with ScopelyID button$")
 	public void user_clicks_on_login_with_scopelyId_button() {
-		TestUtil.click(initPage.getLoginWithScopelyId());
+		TestUtil.click(champsWaits.elementToBeClickable(initPage.getLoginWithScopelyId()));
 	}
 
 }

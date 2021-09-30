@@ -13,8 +13,10 @@ Feature: Log in WWE Champions Web Portal, change Avatar and Frame for the Player
     And User clicks on submit button
     And User clicks on account settings button
     And User clicks on change avatar button
+    And User gets avatar attribute value for comparing
     And User changes avatar
     And User applies to change avatar
+    And User checks that avatar is changed
     And User clicks on account settings button
     And User logouts the page
 
@@ -23,7 +25,9 @@ Feature: Log in WWE Champions Web Portal, change Avatar and Frame for the Player
     And User clicks on account settings button
     And User clicks on change avatar button
     And User clicks on change frame button
+    And User gets frame attribute value for comparing
     And User changes frame
     And User applies to change frame
+    And User checks that frame is changed
     And User clicks on account settings button
     And User logouts the page

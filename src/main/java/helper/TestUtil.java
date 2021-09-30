@@ -11,6 +11,14 @@ import java.util.Random;
  */
 public class TestUtil {
 
+	private static final String DATA_ID = "data-id";
+	private static String valueForComparing;
+	private static int randomNumber;
+
+	public static String getValueForComparing(){
+		return valueForComparing;
+	}
+
 	public static void click(WebElement webElement) {
 		Objects.requireNonNull(webElement, "invalid web element" + webElement);
 		webElement.click();
@@ -23,11 +31,19 @@ public class TestUtil {
 
 	public static WebElement getElementInArray(List<WebElement> webElements) {
 		Objects.requireNonNull(webElements, "web elements are invalid" + webElements);
-		return webElements.get(randomNumberGenerator(webElements.size()));
+		return webElements.get(randomNumber);
+	}
+
+	public static String getElementAttributeValue(List<WebElement> webElements) {
+		Objects.requireNonNull(webElements, "web elements are invalid" + webElements);
+		randomNumber = randomNumberGenerator(webElements.size());
+		valueForComparing = webElements.get(randomNumber).getAttribute(DATA_ID);
+		return valueForComparing;
 	}
 
 	public static int randomNumberGenerator(int number) {
 		Random random = new Random();
 		return random.nextInt(number);
 	}
+
 }

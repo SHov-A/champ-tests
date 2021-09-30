@@ -17,8 +17,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
  */
 public class PageContext {
 
-	private static final int PAGE_LOAD_TIMEOUT = 15;
-	private static final int IMPLICIT_WAIT = 15;
+	private static final int PAGE_LOAD_TIMEOUT = 60;
 	private static final String URL_PROPERTY = "url";
 
 	private final WebDriver driver;
@@ -31,9 +30,7 @@ public class PageContext {
 		this.driver = driver;
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, SECONDS);
-		driver.manage().timeouts().implicitlyWait(IMPLICIT_WAIT, SECONDS);
 		driver.get(config().getProperty(URL_PROPERTY));
-		driver.manage().deleteAllCookies();
 	}
 
 	/**

@@ -1,7 +1,6 @@
 package pages;
 
 import config.PageContext;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -11,11 +10,6 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class InitPage {
 
-	private final WebDriver driver;
-
-	@FindBy(xpath = "//title[contains(text(),'WWE Champions')]")
-	private WebElement title;
-
 	@FindBy(xpath = "//button[contains(text(),'Login')]")
 	private WebElement initialLogin;
 
@@ -23,12 +17,7 @@ public class InitPage {
 	private WebElement loginWithScopelyId;
 
 	public InitPage(PageContext pageContext) {
-		this.driver = pageContext.getDriver();
-		PageFactory.initElements(this.driver, this);
-	}
-
-	public String getHomePageTitle() {
-		return driver.getTitle();
+		PageFactory.initElements(pageContext.getDriver(), this);
 	}
 
 	public WebElement getInitialLogin() {

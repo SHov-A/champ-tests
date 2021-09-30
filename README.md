@@ -15,3 +15,5 @@ It works with chrome, gecko and opera drivers in two operating systems(windows a
 IED driver works only for windows operating system, it doesn't support linux operating system.
 <br>
 After running test report is generated in <code>target</code> folder with name <code>testChampionsReport</code>, if test fails the screen shot of related page appears in report.
+<br>
+Manual testing files in <code>ManualQA</code> folder.
