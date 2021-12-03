@@ -8,9 +8,9 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "classpath:features/testChampions.feature",
 		glue = "stepDefinitions",
-		plugin = {"pretty", "html:target/testChampionsReport"},
-		tags = {"@all"},
-		strict = true,
+		plugin = {"pretty", "html:target/cucumber-reports/all.html",
+				"json:target/cucumber-reports/all.json"},
+		tags = "@all",
 		monochrome = true,
 		dryRun = false)
 

@@ -16,7 +16,7 @@ public class Hooks {
 	@After
 	public void after(Scenario scenario) {
 		if (scenario.isFailed()) {
-			scenario.embed(pageContext.getScreenShot(), "image/png", "The Screenshot");
+			scenario.attach(pageContext.getScreenShot(), "image/png", "The Screenshot");
 		}
 	}
 

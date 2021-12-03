@@ -17,7 +17,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
  */
 public class PageContext {
 
-	private static final int PAGE_LOAD_TIMEOUT = 60;
+	private static final int PAGE_LOAD_TIMEOUT = 20;
 	private static final String URL_PROPERTY = "url";
 
 	private final WebDriver driver;

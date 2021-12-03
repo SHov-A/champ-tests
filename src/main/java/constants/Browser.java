@@ -2,6 +2,7 @@ package constants;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
@@ -17,7 +18,9 @@ public enum Browser {
 	CHROME("webdriver.chrome.driver", DriverProps.chrome) {
 		@Override
 		public WebDriver driver() {
-			return new ChromeDriver();
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--headless", "--window-size=1920,1200");
+			return new ChromeDriver(options);
 		}
 	},
 	FIREFOX("webdriver.gecko.driver", DriverProps.firefox) {
