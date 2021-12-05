@@ -15,6 +15,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+      - name: setup-chromedriver
+        uses: nanasess/setup-chromedriver@v1.0.1
       - name: Build with Maven
         run: mvn clean verify -Dparallel.tests.count=2
       - name: Deploy report page to GitHub Page
