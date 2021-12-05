@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
                 "json:target/cucumber-reports/avatar.json"},
         tags = "@avatar",
         monochrome = true,
+        publish = true,
         dryRun = false)
 public class RunnerAvatarTest {
 }
