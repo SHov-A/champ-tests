@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
                 "json:target/cucumber-reports/frame.json"},
         tags = "@frame",
         monochrome = true,
+        publish = true,
         dryRun = false)
 public class RunnerFrameTest {
 }

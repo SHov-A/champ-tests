@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
 				"json:target/cucumber-reports/all.json"},
 		tags = "@all",
 		monochrome = true,
+		publish = true,
 		dryRun = false)
 
 public class RunnerTest {
