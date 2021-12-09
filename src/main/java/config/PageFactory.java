@@ -3,6 +3,9 @@ package config;
 import constants.Browser;
 import constants.OS;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.LocalFileDetector;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import pages.HomePage;
@@ -10,6 +13,9 @@ import pages.InitPage;
 import pages.LoginPage;
 import waits.ChampsWaits;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashMap;
 import java.util.Properties;
 
 /**
@@ -22,7 +28,7 @@ public class PageFactory {
 	private static final String OS_PROP = "os.name";
 
 	@Bean
-	public PageContext pageContext() {
+	public PageContext pageContext()  {
 		Properties prop = PageContext.config();
 		String browserName = prop.getProperty(BROWSER_PROP);
 		String osName = System.getProperty(OS_PROP);
@@ -32,7 +38,23 @@ public class PageFactory {
 			throw new RuntimeException("Unsupported os: " + osName);
 		}
 		if (browser == null) {
-			throw new RuntimeException("Unsupported browser type: " + browserName);
+			DesiredCapabilities capabilities = new DesiredCapabilities();
+			capabilities.setCapability("browserName", "chrome");
+			capabilities.setCapability("browserVersion", "96.0");
+			capabilities.setCapability("selenoid:options", new HashMap<String, Object>() {{
+				put("enableVNC", true);
+			}});
+			RemoteWebDriver remoteWebDriver = null;
+			try {
+				remoteWebDriver = new RemoteWebDriver(
+						new URL("http://10.245.8.170:4444/wd/hub/"),
+						capabilities
+				);
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			}
+			remoteWebDriver.setFileDetector(new LocalFileDetector());
+			return new PageContext(remoteWebDriver);
 		}
 		String valueOfProperty = browser.getValue().get(os);
 		if (valueOfProperty == null) {
